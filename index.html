@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yuekai Kevin Lu · Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#d6d9df;--fg:#12161d;--mut:#454d5c;--line:#b9bfc9;--card:#e4e6eb;--acc:#2059bd;
+--serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.brand{font:500 18px var(--serif);text-decoration:none}
+nav{display:flex;gap:22px;font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+nav a{text-decoration:none;color:var(--mut);transition:color .2s}nav a:hover{color:var(--acc)}
+.mono{font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.hero{padding:96px 0 72px;border-bottom:1px solid var(--line)}
+h1{font:400 clamp(44px,8vw,92px)/1.02 var(--serif);letter-spacing:-.02em;margin:18px 0 24px}
+h1 em{font-style:italic;color:var(--acc)}
+.lead{max-width:600px;font-size:19px;color:var(--mut);margin:0 0 32px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 20px;border:1px solid var(--fg);border-radius:999px;text-decoration:none;font-size:14px;transition:.2s}
+.btn.p{background:var(--fg);color:var(--bg)}.btn:hover{border-color:var(--acc);background:var(--acc);color:#fff}
+.stats{display:flex;gap:40px;margin-top:56px}
+.stats b{display:block;font:400 34px var(--serif)}
+.herogrid{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;align-items:center}
+.herogrid.has-photo{grid-template-columns:minmax(0,1fr) 320px}
+.herogrid.has-photo h1{font-size:clamp(44px,6.2vw,80px)}
+.portrait{margin:0;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:0 22px 44px -26px rgba(18,22,29,.55)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:820px){.herogrid.has-photo{grid-template-columns:minmax(0,1fr);gap:28px}.portrait{order:-1;width:190px;aspect-ratio:1/1;border-radius:50%}}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:36px}
+h2{font:400 clamp(30px,4vw,44px) var(--serif);letter-spacing:-.01em;margin:0}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:400 12px var(--mono);padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--mut);cursor:pointer}
+.chip.on,.chip:hover{border-color:var(--acc);color:var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .25s,border-color .25s}
+.card:hover,.card:focus-visible{transform:translateY(-4px);border-color:var(--acc)}
+.thumb{aspect-ratio:16/10;background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/24px 24px,var(--card);display:flex;align-items:center;justify-content:center;font:400 54px var(--serif);color:var(--acc);opacity:.95}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.cb{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.cb h3{font:500 22px var(--serif);margin:0}
+.cb p{margin:0;color:var(--mut);font-size:14.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.skills span{font:400 11px var(--mono);padding:3px 9px;border-radius:6px;background:color-mix(in srgb,var(--acc) 12%,transparent);color:var(--acc)}
+.job{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:28px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0;padding-top:0}
+.job h3{font:500 24px var(--serif);margin:0 0 2px}.job .co{color:var(--acc);font-size:15px;margin-bottom:10px}.job p{margin:0;color:var(--mut);max-width:680px}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:56px}
+.about p{margin:0 0 16px;font-size:17px}
+.love{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 28px}
+.love span{padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;background:var(--card)}
+.contact{text-align:center}
+.contact a.mail{font:400 clamp(24px,5vw,46px) var(--serif);text-decoration:none;border-bottom:1px solid var(--acc)}
+.contact .btns{justify-content:center;margin-top:32px}
+footer{padding:28px 0;text-align:center}
+dialog{width:min(720px,calc(100vw - 32px));max-height:88vh;padding:0;border:1px solid var(--line);border-radius:16px;background:var(--bg);color:var(--fg)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog .thumb{aspect-ratio:2/1}.db{padding:28px 32px 34px}
+dialog h3{font:400 34px var(--serif);margin:6px 0 14px}dialog p{color:var(--mut)}
+.x{position:absolute;top:12px;right:14px;background:var(--bg);border:1px solid var(--line);color:var(--fg);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px}
+.vids{display:grid;gap:18px;margin:22px 0 0}
+.vid{aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000}
+.vid iframe,.vid video{width:100%;height:100%;border:0;display:block}
+.vph{display:flex;align-items:center;justify-content:center;text-align:center;height:100%;padding:18px;color:#fff;text-decoration:none;font:400 13px/1.5 var(--mono)}
+.vid.tall{aspect-ratio:9/16}.tallw{max-width:340px;width:100%;margin:0 auto}
+.vcap{display:flex;justify-content:space-between;gap:12px;margin-top:6px;flex-wrap:wrap}
+.vcap a{color:var(--acc);text-decoration:none}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:24px}
+.gi{display:flex;flex-direction:column;gap:6px;min-width:0}
+.gc{font:400 12px/1.4 var(--sans);color:var(--mut);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.gal button{all:unset;cursor:pointer;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line);transition:border-color .2s}
+.gal button:hover,.gal button:focus-visible{border-color:var(--acc);outline:2px solid var(--acc)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block}
+#lbox{width:min(1000px,calc(100vw - 24px));padding:14px}
+#lbox img{width:100%;max-height:74vh;object-fit:contain;display:block}
+.lbf{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
+#tools textarea{width:100%;margin:8px 0 0;padding:10px;font:400 12px/1.5 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;resize:vertical}
+#tools input[type=file]{margin-top:8px}
+@media(max-width:720px){nav{gap:14px}.job,.about{grid-template-columns:1fr;gap:12px}.hero{padding-top:56px}.stats{gap:28px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="#top">Y. Lu</a>
+<nav><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Contact</a></nav></div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap herogrid" id="herogrid">
+<div class="herotxt">
+<div class="mono" id="kicker"></div>
+<h1 id="name"></h1>
+<p class="lead" id="tagline"></p>
+<div class="btns"><a class="btn p" href="#projects">View projects</a><a class="btn" id="resume" target="_blank" rel="noopener">Download résumé</a></div>
+<div class="stats" id="stats"></div>
+</div>
+<figure class="portrait" id="portrait" hidden><img id="photo" alt=""></figure>
+</div></div>
+
+<section id="projects"><div class="wrap">
+<div class="sh"><h2>Projects</h2><div class="filters" id="filters"></div></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+<div class="sh"><h2>Experience</h2></div>
+<div id="jobs"></div>
+</div></section>
+
+<section id="about"><div class="wrap"><div class="about">
+<div><div class="sh"><h2>About</h2></div><div id="bio"></div></div>
+<div><div class="mono">What I'm up to</div><p id="upto" style="margin:8px 0 28px"></p>
+<div class="mono">What I love</div><div class="love" id="love"></div></div>
+</div></div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+<div class="mono">Let's talk</div>
+<p style="margin:14px 0 22px;color:var(--mut)">Open to conversations about aerodynamics, design, and manufacturing.</p>
+<a class="mail" id="mail"></a>
+<div class="btns"><a class="btn" id="li" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></section>
+<section id="tools" hidden><div class="wrap">
+<div class="sh"><h2>Image helper</h2><span class="mono">Visible only with #tools in the address</span></div>
+<p style="color:var(--mut);max-width:700px;margin:0 0 18px">Choose several photos, copy the code for the route you use, and paste it inside that project's { ... } block in the SITE data. The first photo becomes the card image (or set <code>cover: "file.jpg"</code>). For a caption, add a | and the text after the filename, like <code>"images/file.jpg | CAD assembly"</code>.</p>
+<input type="file" id="tf" accept="image/*" multiple>
+<div class="mono" style="margin-top:28px">Route A: hosted with an images folder <button class="chip" onclick="cp('oa')">Copy</button></div>
+<textarea id="oa" readonly rows="5" placeholder="Choose photos above"></textarea>
+<div class="mono" style="margin-top:22px">Route B: embedded in the file, works on the claude.ai link <button class="chip" onclick="cp('ob')">Copy</button> <span id="tsize"></span></div>
+<textarea id="ob" readonly rows="5" placeholder="Choose photos above"></textarea>
+<div class="gal" id="tprev"></div>
+</div></section>
+</main>
+<footer class="mono" id="foot"></footer>
+
+<dialog id="dlg"><button class="x" aria-label="Close" onclick="dlg.close()">×</button><div id="dbody"></div></dialog>
+<dialog id="lbox"><button class="x" aria-label="Close" onclick="lbox.close()">×</button><img id="lbimg" alt="">
+<div class="lbf"><button class="chip" id="lbp">← Prev</button><span class="mono" id="lbcap"></span><button class="chip" id="lbn">Next →</button></div></dialog>
+
+<script>
+/* ============================================================
+   EDIT YOUR CONTENT HERE. To add a project or a job, copy an
+   existing { ... } block, paste it in the list, and change the text.
+   PHOTO: put your portrait in the images folder and set photo: "images/me.jpg" at the top of SITE.
+   IMAGES: add  images: ["images/a.jpg", "images/b.jpg"]  to a project.
+   The first one is the card image (or set cover: "...").
+   CAPTIONS: type a | and the caption after any image or video:
+     "images/a.jpg | CAD assembly"
+     "https://youtu.be/XXXXXXXXXXX | Final demo run"
+   VIDEOS: add  videos: ["https://youtu.be/XXXXXXXXXXX"]  to a project.
+   Works with YouTube and Vimeo links (unlisted is fine), or your own file such as
+   "videos/demo.mp4".
+   Easy way (images): open this page with #tools on the end of the address
+   (or set showTools: true) to use the Image helper.
+   ============================================================ */
+const SITE = {
+  photo: "images/Headshot.jpg",      // your portrait, shown beside your name. "" hides it
+  photoFocus: "53% 0%",       // crop position: left/right  up/down (try "50% 10%" to show more headroom)
+  showTools: false, // true = show the Image helper section
+  name: "Yuekai Kevin Lu",
+  kicker: "Mechanical Engineering · Tufts University",
+  tagline: "Mechanical engineering undergraduate passionate about aerodynamics, mechanical design, and manufacturing.",
+  email: "KevinLu811@gmail.com",
+  linkedin: "https://www.linkedin.com/in/yuekaikevinlu/",
+  resume: "https://5af383ba-28e9-49e1-9e95-b56b762736c6.filesusr.com/ugd/04f513_3536ec4aaf694b61860694e562c63676.pdf",
+  about: [
+    "I was born in Suzhou, China. My family moved to the United States when I was a child and I grew up in Sarasota, Florida.",
+    "Now I'm at Tufts University studying Mechanical Engineering and Economics, completed my first powerlifting meet, and recovering from ACL/meniscus surgery. I aspire to combine my interests to develop innovative solutions with a high performance engineering team."
+  ],
+  upTo: "Enjoying my last year at Tufts and working on some neat projects.",
+  loves: ["Matcha", "F1", "Powerlifting", "Cats", "House music", "Clash Royale"],
+
+  experience: [
+    { role: "Mechanical Design Engineering Intern", company: "Eaton Corporation · Power Distribution Monitoring and Control", dates: "May 2026 – Aug 2026",
+      summary: "Designed and prototyped a variable transformer (Variac) enclosure and advanced a model low-voltage switchgear (LVS) tradeshow display through the CAD phase to meet customer and business needs. I gathered Voice of Customer feedback and translated Critical to Quality requirements into engineering specifications, developed hand-sketched concepts and 300+ 3D CAD models in Autodesk Inventor, and incorporated feedback from two formal design reviews to improve functionality, manufacturability, and usability. I authored electrical wiring schematics, bills of materials, and assembly documentation, managed prototype procurement through in-house fabrication orders and outsourced purchase requests, and assembled and validated the Variac prototype to verify component fit." },
+    { role: "Quality Engineering Intern", company: "Eaton Aerospace · Fluid and Electrical Distribution Division", dates: "May 2025 – Aug 2025",
+      summary: "Led the aerospace division's transition to statistical process control to improve inspection efficiency and increase on-time delivery to customers. Conducted time studies, authored inspection plans and standard work instructions, and trained product inspectors. Designed a cost analysis spreadsheet to bridge the gap between statistical process control and business objectives." },
+    { role: "Manufacturing Engineering Intern", company: "Eaton Aerospace · Fuel and Motion Control Systems Division", dates: "May 2024 – Aug 2024",
+      summary: "Worked on cross-functional engineering projects to improve manufacturing efficiency, product labeling, and internal communications. Designed 3D fixtures in Creo, authored testing work instructions, and fabricated transport vehicles to enhance workflow. Led design efforts for marketing materials used in site tours and outreach events." }
+  ],
+
+  projects: [
+    { title: "Electromechanical Robot", tag: "Mechatronics", context: "ME30",
+      skills: ["Raspberry Pi", "Flask", "Analog electronics", "Laser cutting", "Iterative design"],
+      summary: "Designed a wirelessly driven robot that measures the mass of a block to complete a cooperative seesaw-balancing task with another team. Driven from a laptop through a Flask web interface on a Raspberry Pi, with a load cell amplified by an op-amp (gain of 390) for force measurement. The first iteration used a flexible 3 mm acrylic chassis and a belt-driven lever arm that failed to actuate. The final design used a rigid dual-layer 3 mm birch chassis, an improved belt drive, and a rope-actuated lever arm, plus revised control code for smoother driving.", 
+      cover: "images/EMRobot8.jpeg",
+      images: [
+        "images/EMRobot1.png | Initial CAD design",
+        "images/EMRobot2.jpeg | 3D printing parts",
+        "images/EMRobot3.jpeg | First gear assembly",
+        "images/EMRobot4.jpeg | Prototype 1",
+        "images/EMRobot5.png | Second CAD design",
+        "images/EMRobot6.jpeg | Improved gear assembly ",
+        "images/EMRobot7.jpeg | Final prototype",
+        "images/EMRobot8.jpeg | Prototype holding unknown weight",
+        "images/EMRobot9.jpeg | Prototype and Flask web interface",
+      ],
+      videos: [
+        "https://youtube.com/shorts/nP1wmAgr5xY?feature=share | First prototype testing",
+        "https://youtu.be/JG9R7MPZSl8 | Final prototype testing",
+      ] },
+    { title: "Brush Buddy", tag: "Mechanical Design", context: "ME40",
+      skills: ["User research","Ideation","Prototyping","Team leadership"],
+      summary: "My team and I worked through a user-centered design process to develop an assistive hairbrush that enables Dallas, an 11-year-old with cerebral palsy, to brush her hair independently despite limited mobility and dexterity. I led the market research, problem definition, and identification of Dallas’s most important user needs, and facilitated ideation sessions using brainwriting and morphological matrices to generate five distinct design concepts. We presented our ideas through supporting documentation and a client-facing video.\n\nI led the creation of our initial prototype, using low-fidelity materials to demonstrate core functions like stability and usability. Alongside it, we submitted a slide deck, a team contribution statement, and a one-minute demo video. For the final deliverables, I led the refinement of the prototype, the development of printed instructions and a user testing plan, and the preparation of a narrated video, captioned product images, and our final showcase poster. This project sharpened my leadership in inclusive design, iterative prototyping, and team coordination.",
+      cover: "images/BrushBuddy1.png",
+      images: [
+        "images/BrushBuddyChart1.png | Engineering requirements",
+        "images/BrushBuddyChart2.png | Engineering requirements cont.",
+        "images/BrushBuddy5.jpg | Prototype 1",
+        "images/BrushBuddy6.jpg | Prototype 1 cont.",
+        "images/BrushBuddy4.png | CAD design",
+        "images/BrushBuddy2.png | Final prototype",
+        "images/BrushBuddy3.png | Final prototype cont.",
+        "images/BrushBuddy1.png | Final prototype cont.",
+        "images/BrushBuddyPresentation.jpg | Presentation"
+      ] },
+    { title: "Aerodynamics Trajectory Simulation", tag: "Analysis & Simulation", context: "ME154",
+      skills: ["Aerodynamics","Excel","Drag & lift","Reynolds number"],
+      summary: "I modeled the flight of a Titleist Pro V1 golf ball using drag and lift coefficients based on its Reynolds number at a 76 m/s drive. For a drive launched from a 10 m tee at 4° above horizontal, I estimated a Reynolds number of about 100,000, which gave a drag coefficient of 0.21 and a lift coefficient of 0.225 from a spin factor of 0.15. Using Excel, I calculated the ball’s position and velocity over time, producing graphs of its trajectory and speed. The plots show the ball rising at the launch angle and peaking near 39 m, then descending as drag slows it from 76 m/s to about 26 m/s horizontally and gravity takes over, for a carry of about 300 m. I then used the same simulator as a targeting tool, tuning the launch to 60 m/s at 39.7° so the ball landed within about a meter of a target 200 m away. On this higher arc, horizontal speed rises slightly late in the flight as lift gains a forward component on the descent. This demonstrates how aerodynamic forces can both predict and help design a golf shot under ideal conditions.",
+      cover: "images/Aero5.png",
+      images: [
+        "images/Aero2.png | Excel calculator calculating flight path",
+        "images/Aero1.png | Excel calculator calculating x and y velocity",
+        "images/Aero3.png | Launch conditions for the target shot: 60 m/s at 39.72°, CD = 0.21, CL = 0.2253, and a 0.075 s time step",
+        "images/Aero5.png | Simulated drive of a Titleist Pro V1 at 76 m/s, peaking near 39 m and landing about 300 m downrange",
+        "images/Aero4.png | Horizontal velocity decays under drag, while vertical velocity rises briefly from the 4° launch and then reverses as gravity takes over",
+        "images/Aero7.png | Horizontal speed levels off, then rises slightly late in the descent as lift gains a forward component",
+        "images/Aero6.png | Trajectory tuned to hit the target at X = 200 m. The pink marker shows the target location",
+      ] },
+    { title: "Plinko!", tag: "Mechatronics", context: "ME30",
+      skills: ["CAD", "KiCad", "CircuitPython", "Soldering", "3D printing", "Laser cutting"],
+      summary: "Designed and built an interactive Plinko-inspired electromechanical game integrating mechanical design, electronics, and embedded programming. Fabricated a custom housing and internal fixtures by laser cutting and 3D printing, used bearings and a DC motor for motion, and moved the control system from a breadboard prototype to a custom PCB that I designed and soldered. Motor direction and speed run through an H-bridge driver, with game logic and I/O in CircuitPython.",
+      images: [
+        "images/Plinko1.jpg",
+        "images/PlinkoCad1.png",
+        "images/PlinkoCad2.png"
+      ],
+      videos: [
+        "https://youtube.com/shorts/eNydCohBNaQ?feature=share"
+      ]  },
+    { title: "Fishing Game", tag: "Mechatronics", context: "ME30",
+      skills: ["CAD", "Laser cutting", "KiCad", "CircuitPython"],
+      summary: "Developed an interactive fishing-themed game combining mechanical design, digital fabrication, and embedded electronics. Designed the full assembly in CAD, laser cut the housing and game components for precise fit and repeatability, implemented the gameplay logic in CircuitPython, and designed the supporting electronics in KiCad, including schematic capture and PCB layout.",
+      images: [
+        "images/FishGame1.jpg",
+        "images/FishGame2.jpg"
+      ],
+      videos: [
+        "https://youtube.com/shorts/XWWzCDD3_2I"
+      ] },
+    { title: "DJ Booth", tag: "Mechanical Design", context: "Personal project · Fraternity DJ stand",
+      skills: ["CAD", "FEA", "Budgeting", "Woodworking", "Painting"],
+      summary: "Designed and built a custom DJ stand for my fraternity, from concept to completed installation. Created the design in CAD with detailed fabrication drawings, ran FEA on the structure, developed a material cost estimate to stay within budget, fabricated the stand with shop tools, and finished it with a custom paint job.",
+      images: [
+        "images/DJStand1.JPG",
+        "images/DJStand.JPG",
+        "images/DJStandFEA.png",
+        "images/DJStandCAD.png"
+      ] },
+    { title: "Electric Toothbrush Teardown", tag: "Analysis & Simulation", context: "ME40",
+      skills: ["Usability analysis","Task analysis","Product teardown","CAD"],
+      summary: "For my User Centered Design project, I conducted a comprehensive analysis of the Oral-B Pro 500 Rechargeable Toothbrush, focusing on usability, ergonomics, and design intent. I began by identifying the target audience, which includes general consumers, budget-conscious buyers, and users with limited dexterity, through product research, user feedback, and observational studies. I performed a detailed unboxing and first-use evaluation to document user interactions and identify affordances, intuitive features, and usability gaps such as the lack of battery indicators and unclear secondary button functions.\n\nTo deepen my understanding, I disassembled the toothbrush and modeled all internal components in CAD, enabling a clear visualization of part relationships and manufacturing intent. I also created a task analysis chart to map user actions during setup and daily use, highlighting potential design improvements for clarity and accessibility. This project strengthened my ability to connect engineering design, human factors, and product usability in developing insights for better consumer product experiences.",
+      images: [
+        "images/EToothbrushButton.png",
+        "images/EToothbrushHead.png",
+        "images/EToothbrushFull1.png",
+        "images/EToothbrushFull2.png",
+        "images/EToothbrushSlice1.png",
+        "images/EToothbrushBase.png",
+        "images/EToothbrushSlice2.png",
+        "images/EToothbrushCharger.png",
+        "images/EToothbrushMotorAssem.png",
+        "images/EToothbrushMotor.png",
+        "images/EToothbrushDriveShaft.png",
+        "images/EToothbrushHead2.png"
+      ] },
+  ]
+};
+
+/* ---------------- rendering (no need to edit below) ---------------- */
+const $=id=>document.getElementById(id);
+const h=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const parts=SITE.name.split(" ");
+$("kicker").textContent=SITE.kicker;
+$("name").innerHTML="";$("name").append(parts.slice(0,-1).join(" ")+" ",Object.assign(h("em"),{textContent:parts.slice(-1)[0]}));
+$("tagline").textContent=SITE.tagline;
+if(SITE.photo){const f=$("photo");f.onerror=()=>{$("portrait").hidden=true;$("herogrid").classList.remove("has-photo")};
+  f.alt=SITE.name;f.style.objectPosition=SITE.photoFocus||"50% 25%";f.src=SITE.photo;$("portrait").hidden=false;$("herogrid").classList.add("has-photo")}
+$("resume").href=SITE.resume;
+$("mail").href="mailto:"+SITE.email;$("mail").textContent=SITE.email;
+$("li").href=SITE.linkedin;
+$("upto").textContent=SITE.upTo;
+SITE.about.forEach(t=>$("bio").append(h("p",null,t)));
+SITE.loves.forEach(t=>$("love").append(h("span",null,t)));
+$("foot").textContent="© "+new Date().getFullYear()+" "+SITE.name;
+[[SITE.projects.length,"Projects"],[SITE.experience.length,"Internships"]].forEach(([n,l])=>{
+  const d=h("div");d.append(h("b",null,String(n)),h("span","mono",l));$("stats").append(d)});
+
+SITE.experience.forEach(j=>{
+  const r=h("div","job"),l=h("div","mono",j.dates),b=h("div");
+  b.append(h("h3",null,j.role),h("div","co",j.company),h("p",null,j.summary));
+  r.append(l,b);$("jobs").append(r)});
+
+const norm=x=>{if(typeof x!=="string")return x;const i=x.indexOf("|");return i<0?{src:x.trim()}:{src:x.slice(0,i).trim(),cap:x.slice(i+1).trim()}};
+const vids=p=>{
+  const L=(p.videos||[]).map(norm);
+  const box=h("div","vids");
+  L.forEach(v=>{
+    const u=v.src,yt=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/),vm=u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    const tall=/youtube\.com\/shorts\//.test(u)||v.vertical;const wrap=h("div",tall?"tallw":null),frame=h("div","vid"+(tall?" tall":""));
+    if((yt||vm)&&location.protocol==="file:"){
+      const a=h("a","vph","▶ Watch on "+(yt?"YouTube":"Vimeo")+" — the player appears here once the site is hosted");a.href=u;a.target="_blank";a.rel="noopener";frame.append(a);
+    }else if(yt||vm){
+      const f=h("iframe");
+      f.src=yt?"https://www.youtube-nocookie.com/embed/"+yt[1]:"https://player.vimeo.com/video/"+vm[1];
+      f.title=v.cap||p.title+" video";f.loading="lazy";f.allowFullscreen=true;
+      f.allow="fullscreen; picture-in-picture";f.referrerPolicy="strict-origin-when-cross-origin";frame.append(f);
+    }else{
+      const f=h("video");f.src=u;f.controls=true;f.preload="metadata";f.playsInline=true;if(v.poster)f.poster=v.poster;frame.append(f);
+    }
+    wrap.append(frame);
+    const cap=h("div","vcap mono");cap.append(h("span",null,v.cap||""));
+    if(yt||vm){const a=h("a",null,"Open on "+(yt?"YouTube":"Vimeo")+" ↗");a.href=u;a.target="_blank";a.rel="noopener";cap.append(a)}
+    wrap.append(cap);box.append(wrap)});
+  return box};
+const imgs=p=>(p.images||[]).map(norm);
+const cover=p=>p.cover||(imgs(p)[0]||{}).src||p.image;
+function thumb(p,i){const t=h("div","thumb"),c=cover(p);
+  if(c){const im=h("img");im.src=c;im.alt=p.title;im.loading="lazy";t.append(im)}
+  else t.textContent=String(i+1).padStart(2,"0");return t}
+function chips(p){const s=h("div","skills");p.skills.forEach(k=>s.append(h("span",null,k)));return s}
+
+function open(p,i){
+  const b=$("dbody");b.innerHTML="";
+  const d=h("div","db");
+  d.append(h("div","mono",[p.tag,p.context].filter(Boolean).join(" · ")),h("h3",null,p.title),...p.summary.split("\n\n").map(t=>h("p",null,t)),chips(p),...((p.videos||[]).length?[vids(p)]:[]));
+  const L=imgs(p);
+  if(L.length>1){const g=h("div","gal");L.forEach((it,k)=>{const w=h("div","gi"),bt=h("button"),im=h("img");
+    bt.title=it.cap||"";im.src=it.src;im.alt=it.cap||p.title;im.loading="lazy";bt.append(im);bt.onclick=()=>openLb(L,k);w.append(bt);
+    if(it.cap)w.append(h("div","gc",it.cap));g.append(w)});d.append(g)}
+  b.append(thumb(p,i),d);$("dlg").showModal()}
+$("dlg").addEventListener("close",()=>{$("dbody").innerHTML=""});
+$("dlg").addEventListener("click",e=>{if(e.target===$("dlg"))$("dlg").close()});
+
+function draw(f){
+  $("grid").innerHTML="";
+  SITE.projects.forEach((p,i)=>{
+    if(f!=="All"&&p.tag!==f)return;
+    const c=h("button","card"),b=h("div","cb");
+    b.append(h("div","mono",p.tag+((p.videos||[]).length?"  ·  ▶ video":"")),h("h3",null,p.title),h("p",null,p.summary.split("\n\n")[0]),chips(p));
+    c.append(thumb(p,i),b);c.onclick=()=>open(p,i);$("grid").append(c)})}
+const tags=["All",...new Set(SITE.projects.map(p=>p.tag))];
+tags.forEach((t,i)=>{const c=h("button","chip"+(i?"":" on"),t);
+  c.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");draw(t)};
+  $("filters").append(c)});
+draw("All");
+
+/* lightbox */
+let LB=[],li=0;
+function showLb(){const it=LB[li];$("lbimg").src=it.src;$("lbimg").alt=it.cap||"";
+  $("lbcap").textContent=[it.cap,LB.length>1?(li+1)+" / "+LB.length:""].filter(Boolean).join("  ·  ")}
+function openLb(list,k){LB=list;li=k;showLb();$("lbox").showModal()}
+const step=d=>{li=(li+d+LB.length)%LB.length;showLb()};
+$("lbp").onclick=()=>step(-1);$("lbn").onclick=()=>step(1);
+$("lbox").addEventListener("click",e=>{if(e.target===$("lbox"))$("lbox").close()});
+addEventListener("keydown",e=>{if(!$("lbox").open)return;if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)});
+
+/* image helper */
+const syncTools=()=>{$("tools").hidden=!(location.hash==="#tools"||SITE.showTools)};
+syncTools();addEventListener("hashchange",syncTools);
+const cp=id=>{const t=$(id);t.select();try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand("copy")}};
+const shrink=f=>new Promise(r=>{const u=URL.createObjectURL(f),im=new Image();
+  im.onload=()=>{const k=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement("canvas");
+    c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+    const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);
+    URL.revokeObjectURL(u);r(c.toDataURL("image/jpeg",.78))};
+  im.onerror=()=>r("");im.src=u});
+$("tf").onchange=async e=>{
+  const fs=[...e.target.files];if(!fs.length)return;
+  $("oa").value="images: [\n"+fs.map(f=>'  "images/'+f.name+'"').join(",\n")+"\n],";
+  $("ob").value="Working…";$("tprev").innerHTML="";$("tsize").textContent="";
+  const out=(await Promise.all(fs.map(shrink))).filter(Boolean);
+  $("ob").value="images: [\n"+out.map(u=>'  "'+u+'"').join(",\n")+"\n],";
+  out.forEach(u=>{const im=h("img");im.src=u;$("tprev").append(im)});
+  $("tsize").textContent="· "+(out.join("").length/1e6).toFixed(1)+" MB embedded"};
+</script>
+</body>
+</html>
